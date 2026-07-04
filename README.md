@@ -1,61 +1,149 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🔧 Maintenance Management System — Web & Mobile
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-stack **Preventive & Corrective Maintenance Management System** built as a graduation project. It combines a Laravel web admin panel with a native Android app (Kotlin) and Firebase Realtime Database, enabling organizations to manage, assign, and track maintenance reports in real time.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🏗️ System Architecture
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```
+📱 Mobile App (Kotlin - Android)
+    └── Staff creates maintenance report
+            ↓
+    🔥 Firebase Realtime Database
+            ↓
+    🌐 Laravel Web Panel
+        ├── Superadmin → assigns report to Admin
+        └── Admin → resolves and closes the report
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🧩 Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 📱 Mobile App (Kotlin)
+- ✅ **Create maintenance reports** — staff submits preventive or corrective issues
+- ✅ **Real-time notifications** — instant alerts when report status changes
+- ✅ **Maintenance history** — full log of past and current reports
+- ✅ **Report ID tracking** — unique identifier for every report
+- ✅ **Status traffic light** 🟢🟡🔴 — visual indicator of report progress
+- ✅ **Report vault (baúl)** — archive of completed and closed reports
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 🌐 Web Panel (Laravel)
+- ✅ **3-tier role system** — Staff / Admin / Superadmin
+- ✅ **Dynamic report assignment** — Superadmin assigns reports to responsible Admin
+- ✅ **Real-time status tracking** — live updates via Firebase
+- ✅ **Complete report lifecycle** — Open → Assigned → In Progress → Resolved → Closed
+- ✅ **Admin dashboard** — full visibility of all active and historical reports
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🛠️ Tech Stack
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+| Layer | Technology |
+|---|---|
+| Mobile | Kotlin (Android Native) |
+| Web Backend | Laravel 12, PHP 8.x |
+| Web Frontend | Blade, Tailwind CSS |
+| Database | Firebase Realtime Database |
+| Auth | Firebase Authentication |
+| Real-time | Firebase Cloud Messaging (Push Notifications) |
+| Version Control | Git + GitHub |
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 👥 User Roles
 
-## Contributing
+| Role | Permissions |
+|---|---|
+| **Staff (Usuario)** | Create reports via mobile app, track status, view history |
+| **Admin** | Receive assigned reports, update progress, resolve issues |
+| **Superadmin** | Full system access, assign reports to admins, monitor all activity |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 📊 Report Status Flow
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+🔴 Open → 🟡 Assigned → 🟠 In Progress → 🟢 Resolved → ✅ Closed
+```
 
-## Security Vulnerabilities
+Each status change triggers:
+- Real-time Firebase update
+- Push notification to relevant users
+- History log entry with timestamp
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 📸 Screenshots
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+> Add screenshots of your mobile app (report creation, status view, notifications) and web panel (dashboard, report assignment, admin view) here
+
+---
+
+## ⚙️ Installation & Setup
+
+### Web Panel (Laravel)
+
+```bash
+# Clone the repository
+git clone https://github.com/Miguel-Moises-Valdez-Avila/maintenance-management-system.git
+cd maintenance-management-system
+
+# Install dependencies
+composer install
+npm install
+
+# Environment setup
+cp .env.example .env
+php artisan key:generate
+
+# Add your Firebase credentials to .env
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_DATABASE_URL=your_database_url
+
+# Run migrations
+php artisan migrate --seed
+
+# Start the server
+php artisan serve
+npm run dev
+```
+
+### Mobile App (Kotlin)
+1. Open `/mobile` folder in **Android Studio**
+2. Add your `google-services.json` from Firebase Console
+3. Sync Gradle and run on emulator or physical device (API 21+)
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Upload to GitHub (web + mobile repos)
+- [ ] Deploy Laravel panel to AWS EC2 + RDS
+- [ ] Migrate Firebase DB to Amazon RDS for production
+- [ ] Add photo/evidence attachment to reports
+- [ ] Add GPS location tagging to reports
+- [ ] Publish Android app to Google Play Store
+- [ ] Add Docker + CI/CD with GitHub Actions
+
+---
+
+## 🎓 Academic Context
+
+This project was developed as a **graduation thesis** for the degree of:
+
+> **B.Eng. in Computer Systems Engineering**
+> TecNM — Campus Chetumal
+> Specialization: Web & Mobile Development
+> Year: 2026
+
+---
+
+## 👨‍💻 Author
+
+**Miguel Moisés Valdez Ávila**
+Fullstack Developer | Laravel · React · Kotlin · Firebase · AWS in progress
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/miguel-moises-valdez-avila)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/Miguel-Moises-Valdez-Avila)
